@@ -8,7 +8,7 @@ function separateL()
 	print(L)
 	return L
 end
-
+#hi
 # PreCondition:
 # Input: Pair= Hashset-> T (Rooted Triplet) toString({1,2},3)=1 2 3
 # Input is a hashset of 3 numbers.
