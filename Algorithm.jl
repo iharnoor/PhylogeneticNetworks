@@ -21,8 +21,10 @@ function computeSN(T,L,x,y)
     Z= [y]
 	computed= []
     while(!isempty(Z))
-        z=Z[1]
+		z=Z[1]
         for a in X
+			filter!(x -> x!=a,L)
+			filter!(x -> x!=z,L)
             for c in L
             	temp=[a,c,z]
             	temp2=[z,c,a]
@@ -38,8 +40,8 @@ function computeSN(T,L,x,y)
             	#or contains!(T,temp2))
             end
         end
-        c =Z[1]
-        append!(X,c)
+        h =Z[1]
+        append!(X,h)
         splice!(Z,1)
     end
     return X
@@ -47,7 +49,8 @@ end
 
 T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [2,3,4], [2,3,5], [3,4,5], [1,3,4],
 [1,3,4], [1,3,5], [1,4,5], [2,4,5]]
-L= [2,3,5]
+
+L= [1,2,3,4,5]
 
 N= computeSN(T, L,1,4)
 print(N)
