@@ -14,7 +14,7 @@ end=#
 # Input is a hashset of 3 numbers.
 # Input also contains a leaf set two variables x,y
 # Output:
-  #if statement modified to so that it gets added in both ways
+# if statement modified to so that it gets added in both ways
 
 function computeSN(T,L,x,y)
     X= [x]
@@ -26,20 +26,28 @@ function computeSN(T,L,x,y)
             for c in L
             	temp=[a,c,z]
             	temp2=[z,c,a]
-            	if(temp in T && !(temp in computed)) #pseudo code
-            		#Z=Z U {c}
+				println(temp)
+				# println(temp2)
+            	if(temp in T && !(temp in computed)) #Z=Z U {c} (contains)
             		append!(Z,c)
 					append!(computed, temp)
+					# print('X=',X)
+					# print('Y=',X)
+					# print('temp11=',temp)
+					# print('temp21',temp2)
             	end
             	if(temp2 in T && !(temp2 in computed))
             		append!(Z,c)
 					append!(computed, temp2)
+					# print('computed2=',computed)
+					# print('temp11=',temp)
+					# print('temp21',temp2)
             	end
-            	#or contains!(T,temp2))
+				# print(computed)
             end
         end
-        c =Z[1]
-        append!(X,c)
+        h =Z[1]
+        append!(X,h)
         splice!(Z,1)
     end
     return X
@@ -47,7 +55,11 @@ end
 
 T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [2,3,4], [2,3,5], [3,4,5], [1,3,4],
 [1,3,4], [1,3,5], [1,4,5], [2,4,5]]
-L= [2,3,5]
+L= [2,4,5]
 
-N= computeSN(T, L,1,4)
+N= @enter computeSN(T, L,1,3)
 print(N)
+
+# T= [[(1,2),3], [(1,2),4], [1,2,5], [2,(3,4)], [(2,3),4], [2,3,5], [3,4,5], [1,3,4],
+# [1,3,4], [1,3,5], [1,4,5], [2,4,5]]
+# T= parsedT(T)
