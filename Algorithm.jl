@@ -9,26 +9,26 @@ function computeSN(T,L,x,y)
     Z= [y]
 	computed= []
 	L1= []
-	L1= copy(L)
-    while(!isempty(Z))
+	L1= copy(L) # Creating a copy to be used again
+    while(!isempty(Z)) # Run until Z becomes empty
 		z=Z[1]
-		# println("L= ", string(L))
         for a in X
 			L= copy(L1)
+			# Filter starts L- (X U Z)
 			for p in X
-				filter!(x -> x!=p,L)
+				filter!(x -> x!=p,L) #removing all the elements of X in L
 			end
 			for p in Z
-				filter!(x -> x!=p,L)
+				filter!(x -> x!=p,L) #removing all the elements of Z in L
 			end
+			# Filter ends  L- (X U Z)
             for c in L
-            	temp=[a,c,z]
-            	temp2=[z,c,a]
+            	temp = [a,c,z]
+            	temp2 = [z,c,a]
             	if(temp in T && !(temp in computed)) #pseudo code
             		#Z=Z U {c}
 					append!(Z,c)
-					Z = unique(Z)
-				#	println("Z= ", string(Z))
+					Z = unique(Z) # Making Z unique to avoid redundancy
 					append!(computed, temp)
             	end
             	if(temp2 in T && !(temp2 in computed))
@@ -44,13 +44,13 @@ function computeSN(T,L,x,y)
         splice!(Z,1)
 		println(Z)
     end
-    return X
+    return X			#Returns a SubNetwork
 end
 
-T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [2,3,4], [2,3,5], [3,4,5], [1,3,4],
-[1,3,4], [1,3,5], [1,4,5], [2,4,5]]
+T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
+[3,4,1], [1,3,5], [1,4,5], [2,4,5]]
 
 L= [1,2,3,4,5]
 
-N=computeSN(T, L,1,5)
-print(N)
+N=computeSN(T, L,1,3) # Storing the SubNetwork list in N
+print("Resulting SubNetwork: ",string(N))
