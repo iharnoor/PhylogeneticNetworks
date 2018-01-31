@@ -1,5 +1,10 @@
 # Research-in-Julia
 Creating a level 1 phylogenic tree
+
+## Built By 
+* [Naman Kanwar](https://github.com/Naman26) 
+* [Harnoor Singh](https://github.com/iharnoor) 
+
 ## Test cases
 1,2,3,4,5
 (n+1) choose 2 = 6 choose 2 = 15
