@@ -62,14 +62,6 @@ function computeSN(T,L,x,y)
     return unique(X)			#Returns a SubNetwork
 end
 
-# T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
-# [3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
-# L= [1,2,3,4]
-# N=computeSN(T, L,2,4) # Storing the SubNetwork list in N
-# print("Resulting SubNetwork: ",string(N))
-
-# vector size less than 3 then you stop.
-
 function maximalSubsets(SNs, L)
 		filter!(x -> x!=L,SNs)
 		maxLen=0
@@ -97,10 +89,7 @@ function maximalSubsets(SNs, L)
 		return SNs
 end
 
-function retComputeSN()
-	T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
-	[3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
-	L= [1,2,3,4]
+function retComputeSN(T,L)
 	pairs=[]
 	for i in eachindex(L)
 		j=i
@@ -112,8 +101,6 @@ function retComputeSN()
 		end
 		i+=1
 	end
-	# println(pairs)
-	# computeSN(T, L,2,4)
 	res=[]
 	for element in pairs
 		temp=[]
@@ -123,29 +110,38 @@ function retComputeSN()
 	return res
 end
 
-# Assuming we have stored have results in a single result in a single data structure
 
-function oneHybridLeaf(L)
+function levelOne()
+	T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
+	[3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
+	L= [1,2,3,4]
+	set_SN = retComputeSN(T,L)
 	maximumSubsets= maximalSubsets(set_SN,L)
-	print(maximumSubsets)
+	# print(maximumSubsets)
+	tree=[]
 	for SN in maximumSubsets
 		if length(SN)>=3
-			println("need to call computeSN(SN)")
+			temp=retComputeSN(T,SN)
+			maximumSets=maximalSubsets(temp,L)
+			println("Printing")
+			println(maximumSets)
 		else
+			# tree=
 			println("need to make a tree with these 2 nodes")
 		end
 	end
-	println("Working")
 end
-# oneHybridLeaf(L)
 
 
 function main_func()
-	set_SN = retComputeSN()
-	print(set_SN)
+	T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
+	[3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
+	L= [1,2,3,4]
+	set_SN = retComputeSN(T,L)
+	# print(set_SN)
 	L= [1,2,3,4]
 	var =maximalSubsets(set_SN,L)
 	# print("Maximal Subsets=",string(var))
-	print(var)
+	# print(var)
 end
 main_func()
