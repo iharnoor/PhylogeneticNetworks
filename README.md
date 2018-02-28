@@ -1,5 +1,5 @@
 # Research-in-Julia
-Creating a level 1 phylogenic tree
+Creating a level 1 Phylogenetic Tree
 
 ## Built By 
 * [Naman Kanwar](https://github.com/Naman26) 
@@ -20,7 +20,7 @@ Creating a level 1 phylogenic tree
 * SN(1,2) = {1, 2}
 * SN(1,3) = {1, 3, 2, 4}
 * SN(1,4) = {1, 2, 3, 4}
-* SN(1,5) = {1, 5, 2, 3, 4} correct
+* SN(1,5) = {1, 5, 2, 3, 4}
 * SN(2,3) = {1, 2, 3, 4}
 * SN(2,4) = {1, 2, 3, 4}
 * SN(2,5) = {1, 2, 3, 4, 5}
