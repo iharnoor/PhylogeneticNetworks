@@ -26,10 +26,10 @@ end
 function main_func()
 	T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
 	[3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
-	L= [1,2,3,4]
+	L= [1,2,3,4,5]
 	set_SN = retComputeSN(T,L)
 	println(set_SN)
-	L= [1,2,3,4]
+	# L= [1,2,3,4]
 	var =maximalSubsets(set_SN,L)
 	println("Maximal Subsets=",string(var))
 end

@@ -59,11 +59,13 @@ function computeSN(T,L,x,y)
         splice!(Z,1)
 		# println(Z)
     end
+	X=sort(X)
     return unique(X)			#Returns a SubNetwork
 end
 
 function maximalSubsets(SNs, L)
 		filter!(x -> x!=L,SNs)
+		sortBySize(SNs)
 		maxLen=0
 		index=1
 		indexOfMax=0
@@ -86,7 +88,7 @@ function maximalSubsets(SNs, L)
 			end
 			x+=1
 		end
-		return SNs
+		return unique(SNs)
 end
 
 function retComputeSN(T,L)
@@ -108,4 +110,20 @@ function retComputeSN(T,L)
 		append!(res,[temp])
 	end
 	return res
+end
+
+function sortBySize(arr)
+    i=key=j=0
+    # print(i)
+    for i=2: length(arr)
+        key = arr[i]
+        j=i-1
+
+        while(j>=1 && length(arr[j])>length(key))
+            arr[j+1]=arr[j]
+            j=j-1
+        end
+        arr[j+1]=key
+    end
+    # print(arr)
 end
