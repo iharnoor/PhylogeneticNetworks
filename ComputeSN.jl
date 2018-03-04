@@ -64,20 +64,14 @@ function computeSN(T,L,x,y)
 end
 
 function maximalSubsets(SNs, L)
-		filter!(x -> x!=L,SNs)
+	# SNs are sorted according to its size
 		sortBySize(SNs)
+		filter!(x -> x!=L,SNs)
 		maxLen=0
 		index=1
-		indexOfMax=0
-		for x in SNs
-			if (length(x) > maxLen)
-				maxLen = length(x)
-				indexOfMax=index
-			end
-			index=index+1
-		end
+		# actually equal to the last element as the list is sorted by size
+		indexOfMax = length(SNs)
 		x=1
-		# Assuming SNs are sorted according to its size
 		while(x<indexOfMax)
 			if (findin(SNs[indexOfMax],SNs[x])!=Int64[])
 				# then remove x
