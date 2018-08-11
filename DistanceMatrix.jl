@@ -1,15 +1,16 @@
-aList = [0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 1 1 0 0 1; 0 0 1 0 1 0 0 1; 0 0 0 0 0 1 1 0]
+global aList = [0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0]
+# global aList = [0 0 0 0 1 0 0 0; 0 0 0 0 1 0 0 0; 0 0 0 0 0 0 1 0; 0 0 0 0 0 1 0 0; 1 1 0 0 0 1 1 0; 0 0 0 1 1 0 0 1; 0 0 1 0 1 0 0 1; 0 0 0 0 0 1 1 0]
 visited=[]
 distMatrix= copy(aList)
 depth=0
 
 function setAdjacencyList(adjList)
-    aList = adjList
+    global aList = adjList
     distMatrix =  copy(aList)
-    println("distMatrix", distMatrix)
+    println("distMatrix", aList)
 end
 
-function distFunc(list, inNode,firstNode)
+function distFunc(list, inNode,firstNode) 
     global depth+=1
     vals= collect(i for i=firstNode+1: length(list[:,1]) if list[inNode,i]==1)
     for p in visited
@@ -34,13 +35,10 @@ function distFunc(list, inNode,firstNode)
         end
     end
 end
-
-for i=1:length(aList[:,1])
-    visited=[]
-    depth=0
-    distFunc(aList, i, i)
-end
-
-function returnDistMat()
+            
+function returnDistanceMatrix()
      return distMatrix
-end
+end            
+
+# println("aList Operate",aList)
+
