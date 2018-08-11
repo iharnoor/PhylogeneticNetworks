@@ -42,3 +42,9 @@ end
 
 # println("aList Operate",aList)
 
+# for i=1:length(aList[:,1])
+#     visited=[]
+#     depth=0
+#     distFunc(aList, i, i)
+# end
+
