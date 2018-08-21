@@ -10,7 +10,7 @@ function setAdjacencyList(adjList)
     println("distMatrix", aList)
 end
 
-function distFunc(list, inNode,firstNode) 
+function distFunc(list, inNode,firstNode,visited,depth) 
     global depth+=1
     vals= collect(i for i=firstNode+1: length(list[:,1]) if list[inNode,i]==1)
     for p in visited
@@ -30,7 +30,7 @@ function distFunc(list, inNode,firstNode)
                 distMatrix[j,inNode]= 1
             end
             if !(j in visited)
-               distFunc(list, j, firstNode)
+               distFunc(list, j, firstNode,visited,depth)
             end
         end
     end
@@ -47,4 +47,3 @@ end
 #     depth=0
 #     distFunc(aList, i, i)
 # end
-
