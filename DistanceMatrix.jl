@@ -11,14 +11,14 @@ function setAdjacencyList(adjList)
 end
 
 function distFunc(list, inNode,firstNode,visited,depth) 
-    global depth+=1
+    depth+=1
     vals= collect(i for i=firstNode+1: length(list[:,1]) if list[inNode,i]==1)
     for p in visited
         filter!(x -> x!=p,vals)
     end
     append!(visited, inNode)
     if length(vals)==0
-        global depth-=1
+        depth-=1
         return
     else
 
