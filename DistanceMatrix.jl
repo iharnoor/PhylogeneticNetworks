@@ -2,6 +2,7 @@ global aList = [0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0 0; 0 0 0 0 0 0 0
 # global aList = [0 0 0 0 1 0 0 0; 0 0 0 0 1 0 0 0; 0 0 0 0 0 0 1 0; 0 0 0 0 0 1 0 0; 1 1 0 0 0 1 1 0; 0 0 0 1 1 0 0 1; 0 0 1 0 1 0 0 1; 0 0 0 0 0 1 1 0]
 visited=[]
 distMatrix= copy(aList)
+tempDistMatrix=distMatrix
 depth=0
 
 function setAdjacencyList(adjList)
@@ -34,11 +35,13 @@ function distFunc(list, inNode,firstNode,visited,depth)
             end
         end
     end
+    tempDistMatrix = distMatrix
 end
             
-function returnDistanceMatrix()
-     return distMatrix
-end            
+# function returnDistanceMatrix()
+     
+#      return distMatrix
+# end            
 
 # println("aList Operate",aList)
 
