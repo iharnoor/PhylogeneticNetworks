@@ -5,11 +5,11 @@ distMatrix= copy(aList)
 tempDistMatrix=distMatrix
 depth=0
 
-function setAdjacencyList(adjList)
-    global aList = adjList
-    distMatrix =  copy(aList)
-    println("distMatrix", aList)
-end
+# function setAdjacencyList(adjList)
+#     global aList = adjList
+#     distMatrix =  copy(aList)
+#     println("distMatrix", aList)
+# end
 
 function distFunc(list, inNode,firstNode,visited,depth) 
     depth+=1
@@ -38,10 +38,10 @@ function distFunc(list, inNode,firstNode,visited,depth)
     tempDistMatrix = distMatrix
 end
             
-# function returnDistanceMatrix()
+function returnDistanceMatrix()
      
-#      return distMatrix
-# end            
+     return distMatrix
+end            
 
 # println("aList Operate",aList)
 
