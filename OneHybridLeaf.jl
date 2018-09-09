@@ -247,7 +247,6 @@ end
 
 
 function returnConsistentAdjList(adjLists)
-    
     consistentAdjList=[]
     updatedLists = parseAdjList()
     index=1

@@ -102,7 +102,7 @@ function retComputeSN(T,L)
 		end
 		i+=1
 	end
-	res=[]
+	res = Array{Int64}[]
 	for element in pairs
 		temp=[]
 		append!(temp,computeSN(T, L,element[1],element[2]))
