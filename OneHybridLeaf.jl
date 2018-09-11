@@ -5,10 +5,10 @@ function parseAdjList2(adjList)
         for i in adjList
             a = collect(keys(adjList))
             max= maximum(a)*2+1
-    
+
             b = collect(values(adjList))
             conversion = Dict{Int64,Int64}()
-            
+
             for (key, values) in adjList
                 if(key<0)
                     temp = key
@@ -33,17 +33,17 @@ function operateDistMatrix(mat)
     global distMatrix =  copy(aList)
 #     setAdjacencyList(aList)
 #     println("naman Input Matrix = ",distMatrix)
-    
+
     for i=1:length(mat[:,1])
         visited=[]
         depth=0
         distFunc(mat, i, i,visited,depth)
     end
-    
+
 #     println("naman Output Matrix = ",returnDistanceMatrix())
     return distMatrix
 end
-        
+
 #  Floyd Warshall Test with real data
 function floydWarshall(dists)  # graph is 4x4
     n = 8
@@ -69,9 +69,9 @@ function checkConsistency(floydWarshall)
                     consistent = false
                     break
             end
-    end 
+    end
 #     println("Consistent=",consistent)
-    return consistent 
+    return consistent
 end
 
 function removeEdge(dictionary, key, value)
@@ -110,8 +110,8 @@ function addVertex(dictionary, key, value)
 end
 
 
-function oneHybridLeaf()
-    SNs =[[1,2],[3],[4]]
+function oneHybridLeaf(SNs)
+#     SNs =[[1,2],[3],[4]]
     a1= SNs[1]
     a2= SNs[2]
     a3= SNs[3]
@@ -125,13 +125,13 @@ function oneHybridLeaf()
     c=a1
     u=a2
     v=a3
-    
+
     testDictionary = Dict(zip([1], [[1]]))
 
     arrOfDicts = fill!(Array{Dict{Int64,Array}}(3), testDictionary)
 
 #     println("array of Dicts= ", arrOfDicts)
-    
+
     alphas =[a1,a2,a3]
     for i=1:3
         c=alphas[i]
@@ -148,8 +148,8 @@ function oneHybridLeaf()
         adjListR=Dict{Int64,Array}()
         internalVertex = -1
         v0=internalVertex
-        addVertex(adjListR,v0,u) #3=>-1 and -1=>3,4 and 4=>-1 
-        addVertex(adjListR,v0,v) #3=>-1 and -1=>3,4 and 4=>-1 
+        addVertex(adjListR,v0,u) #3=>-1 and -1=>3,4 and 4=>-1
+        addVertex(adjListR,v0,v) #3=>-1 and -1=>3,4 and 4=>-1
 
         internalVertex -= 1
         p=internalVertex
@@ -169,8 +169,8 @@ function oneHybridLeaf()
         addVertex(adjListR,v0,[q])
         removeEdge(adjListR,v0,u)
         removeEdge(adjListR,v0,v)
-        
-#         println("adjListR==",adjListR) 
+
+#         println("adjListR==",adjListR)
 #         append!(adjLists,adjListR)
         arrOfDicts[i]=adjListR
 #         return adjListR
@@ -184,7 +184,7 @@ function zerosMatrix(size)
     container = Array{Int64}[]
     for i=1:size
         push!(container,array)
-    end 
+    end
     return container
 end
 
@@ -201,21 +201,21 @@ function listToMatrix(list)
     return matrix
 end
 
-function parseAdjList()
-    adjLists=oneHybridLeaf()
+function parseAdjList(SNs)
+    adjLists=oneHybridLeaf(SNs)
 #     println("--------------------------")
 #     println("received adjlist from onehybrid leaf", adjLists)
 #     println("--------------------------")
     # Todo split parse AdjlIst
-    
+
     testDictionary = Dict(zip([1], [[1]]))
     updatedLists = fill!(Array{Dict{Int64,Array}}(3), testDictionary)
 #     for i = 1:length(updatedLists)
 #         println("initial values of adjList", updatedLists[i])
 #     end
-    
+
 #     println("indexing", updatedLists[1])
-    
+
     index=1
     consistentAdjList=[]
     for list in adjLists
@@ -227,10 +227,10 @@ function parseAdjList()
         for i in list
             a = collect(keys(list))
             max= maximum(a)*2+1
-    
+
             b = collect(values(list))
             conversion = Dict{Int64,Int64}()
-            
+
             for (key, values) in list
                 if(key<0)
                     temp = key
@@ -254,12 +254,12 @@ function parseAdjList()
 #         print("\n-----")
 #         print("updatedList:= ",updatedList)
 #         println("-----")
-        
+
         updatedLists[index] = updatedList
         index=index+1
 #         println("updatedList of lists=: ",updatedLists)
     end
-    
+
 #     println(adjLists)
 #     println("Make Distance Matrices")
 #     matrix = listToMatrix(updatedList)
@@ -272,9 +272,9 @@ function parseAdjList()
 end
 
 
-function returnConsistentAdjList(adjLists)
+function returnConsistentAdjList(adjLists,SNs)
     consistentAdjList=[]
-    updatedLists = parseAdjList()
+    updatedLists = parseAdjList(SNs)
     index=1
     for updatedList in updatedLists
 #         println("updated List == ",updatedList)
@@ -292,13 +292,13 @@ function returnConsistentAdjList(adjLists)
         end
         index+=1
     end
-    
     return consistentAdjList
 end
 
-function mainOneHybrid()
-    initialAdjList = oneHybridLeaf()
-    returnConsistentAdjList(initialAdjList)    
+function mainOneHybrid(SNs)
+    initialAdjList = oneHybridLeaf(SNs)
+    returnConsistentAdjList(initialAdjList)
 end
 
-# mainOneHybrid()
+SNs= [[1,2],[3],[4]]
+# mainOneHybrid(SNs)
