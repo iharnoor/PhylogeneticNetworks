@@ -1,5 +1,31 @@
 include("DistanceMatrix.jl")
 
+function parseAdjList2(adjList)
+        updatedList = Dict{Int64,Array}()
+        for i in adjList
+            a = collect(keys(adjList))
+            max= maximum(a)*2+1
+    
+            b = collect(values(adjList))
+            conversion = Dict{Int64,Int64}()
+            
+            for (key, values) in adjList
+                if(key<0)
+                    temp = key
+                    key+=max
+                    conversion[key]=temp
+                end
+                for i=1:length(values)
+                    if(values[i]<0)
+                        values[i]+=max
+                    end
+                end
+                updatedList[key] = values
+            end
+        end
+    return updatedList
+end
+
 function operateDistMatrix(mat)
 # Make the Set method to work 1st August
 #     setAdjacencyList(aList)
@@ -275,4 +301,4 @@ function mainOneHybrid()
     returnConsistentAdjList(initialAdjList)    
 end
 
-mainOneHybrid()
+# mainOneHybrid()
