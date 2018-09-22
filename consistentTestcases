@@ -1,0 +1,22 @@
+received adjlist from onehybrid leafDict{Int64,Array}[Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 1, 2]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-4]),Pair{Int64,Array}(3, [-2]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [3, -4, -1]),Pair{Int64,Array}(1, [-4])), Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-2])), Dict{Int64,Array}(Pair{Int64,Array}(4, [-4]),Pair{Int64,Array}(-4, [-2, -3, 4]),Pair{Int64,Array}(-3, [3, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(3, [-3]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(1, [-2]))]
+
+consistentAdjListDict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-2]))
+
+
+oneHybridLeaf debugging:
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 1, 2]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-4]),Pair{Int64,Array}(3, [-2]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [3, -4, -1]),Pair{Int64,Array}(1, [-4]))
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-2]))
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-4]),Pair{Int64,Array}(-4, [-2, -3, 4]),Pair{Int64,Array}(-3, [3, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(3, [-3]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(1, [-2]))
+
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-2]))
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-3]),Pair{Int64,Array}(-4, [-2, -3, 1, 2]),Pair{Int64,Array}(-3, [4, -4, -1]),Pair{Int64,Array}(2, [-4]),Pair{Int64,Array}(3, [-2]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [3, -4, -1]),Pair{Int64,Array}(1, [-4]))
+adjListR==Dict{Int64,Array}(Pair{Int64,Array}(4, [-4]),Pair{Int64,Array}(-4, [-2, -3, 4]),Pair{Int64,Array}(-3, [1, 2, -4, -1]),Pair{Int64,Array}(2, [-3]),Pair{Int64,Array}(3, [-2]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [3, -4, -1]),Pair{Int64,Array}(1, [-3]))
+
+//failing test cases- consisent
+consistentAdjListDict{Int64,Array}(Pair{Int64,Array}(4, [-2]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [1, 2, -4, -1]),Pair{Int64,Array}(2, [-3]),Pair{Int64,Array}(-2, [4, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-3]))
+
+Dict{Int64,Array}(Pair{Int64,Array}(4, [-2]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [1, 2, -4, -1]),Pair{Int64,Array}(2, [-3]),Pair{Int64,Array}(-2, [4, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-3]))
+
+adjListR final ==Dict{Int64,Array}(Pair{Int64,Array}(4, [-4]),Pair{Int64,Array}(-4, [-2, -3, 4]),Pair{Int64,Array}(-3, [3, -4, -1]),Pair{Int64,Array}(2, [-2]),Pair{Int64,Array}(3, [-3]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [1, 2, -4, -1]),Pair{Int64,Array}(1, [-2]))
+adjListR final ==Dict{Int64,Array}(Pair{Int64,Array}(4, [-2]),Pair{Int64,Array}(-4, [-2, -3, 1, 2]),Pair{Int64,Array}(-3, [3, -4, -1]),Pair{Int64,Array}(2, [-4]),Pair{Int64,Array}(3, [-3]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(-2, [4, -4, -1]),Pair{Int64,Array}(1, [-4]))
+adjListR final ==Dict{Int64,Array}(Pair{Int64,Array}(4, [-2]),Pair{Int64,Array}(-4, [-2, -3, 3]),Pair{Int64,Array}(-3, [1, 2, -4, -1]),Pair{Int64,Array}(2, [-3]),Pair{Int64,Array}(-2, [4, -4, -1]),Pair{Int64,Array}(-1, [-2, -3]),Pair{Int64,Array}(3, [-4]),Pair{Int64,Array}(1, [-3]))
