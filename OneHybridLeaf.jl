@@ -26,10 +26,12 @@ end
 
 #  Floyd Warshall Test with real data
 function floydWarshall(dists)  # graph is 4x4
-    n = 8
+#     println("dists in floyd",dists)
+    n = Int64(sqrt(length(dists)))
     for k = 1 : n, i = 1 : n, j = 1 : n
         dists[i, j] = min(dists[i, k] + dists[k, j],dists[i,j])
     end
+#     println("final Dists",dists)
     return (dists)
 end
 
@@ -113,7 +115,7 @@ function oneHybridLeaf(SNs)
 
     alphas =[a1,a2,a3]
     for i=1:3
-        
+
 #         println("iteration number",i)
         c=alphas[i]
         if(i==1)
@@ -133,7 +135,7 @@ function oneHybridLeaf(SNs)
         addVertex(adjListR,v0,v) #3=>-1 and -1=>3,4 and 4=>-1
 
 #         println("adjlist step 1",adjListR)
-        
+
         internalVertex -= 1
         p=internalVertex
         internalVertex -= 1
@@ -152,7 +154,7 @@ function oneHybridLeaf(SNs)
         removeEdge(adjListR,v0,u)
         removeEdge(adjListR,v0,v)
 
-        println("adjListR final ==",adjListR)
+#         println("adjListR final ==",adjListR)
 
         arrOfDicts[i]=adjListR
     end
@@ -180,14 +182,14 @@ function listToMatrix(list)
     return matrix
 end
 
-# Makes the negative nodes positive in the list 
+# Makes the negative nodes positive in the list
 function parseAdjList(SNs, adjLists2)
 #     println("received adjlist from onehybrid leaf", adjLists2)
 
     adjListCopy = deepcopy(adjLists2)
     testDictionary = Dict(zip([1], [[1]]))
     updatedLists = fill!(Array{Dict{Int64,Array}}(3), testDictionary)
-    
+
     index=1
     consistentAdjList=[]
     for list in adjListCopy
@@ -225,7 +227,8 @@ function returnConsistentAdjList(adjLists,SNs, L, T)
     adjLists_copy= deepcopy(adjLists)
     consistentAdjList=[]
     updatedLists = parseAdjList(SNs, adjLists_copy)
-    
+
+    # println("adjLists",adjLists_copy)
     index=1
     for updatedList in updatedLists
         matrix= listToMatrix(updatedList)
@@ -233,8 +236,8 @@ function returnConsistentAdjList(adjLists,SNs, L, T)
         floyd= floydWarshall(matrix2)
         if(checkConsistency(floyd,L,T) == true)
             consistentAdjList= adjLists[index]
-            println()
-            println("consistentAdjList",consistentAdjList)
+#             println()
+#             println("consistentAdjList",consistentAdjList)
         end
         index+=1
     end
