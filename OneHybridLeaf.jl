@@ -5,7 +5,7 @@ function filter_T(T, L)
     for i in T
         for j in i
 #             if (j == node)
-            if(!any(x->x==j, L)) #if (list[i] contains j)
+            if(!any(x->x==j, L)) #if (list[i] !contains j)
                 filter!(x -> x!=i,T2)
             end
         end
@@ -153,7 +153,7 @@ function oneHybridLeaf(SNs)
         addVertex(adjListR,v0,[q])
         removeEdge(adjListR,v0,u)
         removeEdge(adjListR,v0,v)
-
+        
 #         println("adjListR final ==",adjListR)
 
         arrOfDicts[i]=adjListR
@@ -197,7 +197,7 @@ function parseAdjList(SNs, adjLists2)
         updatedList = Dict{Int64,Array}()
         for i in list
             a = collect(keys(list))
-            max= maximum(a)*2+1
+            max= maximum(a)
 
             b = collect(values(list))
             conversion = Dict{Int64,Int64}()
@@ -205,11 +205,13 @@ function parseAdjList(SNs, adjLists2)
             for (key, values) in list
                 if(key<0)
                     temp = key
-                    key+=max
+                    key*=-1 #Converting negative to positive value 
+                    key+=max  
                     conversion[key]=temp
                 end
                 for i=1:length(values)
                     if(values[i]<0)
+                        values[i]*=-1
                         values[i]+=max
                     end
                 end
@@ -227,7 +229,6 @@ function returnConsistentAdjList(adjLists,SNs, L, T)
     adjLists_copy= deepcopy(adjLists)
     consistentAdjList=[]
     updatedLists = parseAdjList(SNs, adjLists_copy)
-
     # println("adjLists",adjLists_copy)
     index=1
     for updatedList in updatedLists
@@ -247,8 +248,8 @@ end
 function mainOneHybrid(SNs)
     initialAdjList = oneHybridLeaf(SNs)
     L=[1,2,3,4]
-   T= [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [3,4,2], [2,3,5], [3,4,5], [1,3,4],
-	[3,4,1], [1,3,5], [1,4,5], [2,4,5],[2,1,3]]
+   T = [[1,2,3], [1,2,4], [1,2,5], [2,3,4], [2,3,5], [4,5,3], [1,3,4], [1,3,5],
+        [4,5,1], [4,5,2], [3,4,1], [3,5,1], [3,4,2], [3,5,2]]
     returnConsistentAdjList(initialAdjList, SNs,L,T)
 end
 
@@ -258,7 +259,7 @@ end
 # SNs_test = [[3], [4], [1,2]]
 # Failing Test Cases
 # SNs_test = [[4], [3],[1,2]]
-SNs_test = [[4], [1,2],[3]]
+SNs_test = [[4,5], [1,2],[3]]
 
 
 mainOneHybrid(SNs_test)
